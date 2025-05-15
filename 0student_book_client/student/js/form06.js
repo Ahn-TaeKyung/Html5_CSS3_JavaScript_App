@@ -69,7 +69,8 @@ function validateStudent(student) {// 필수 필드 검사
         return false;
     }
     // 학번 형식 검사 (예: 영문과 숫자 조합)
-    const studentNumberPattern = /^[A-Za-z0-9]+$/;
+    //const studentNumberPattern = /^[A-Za-z0-9]+$/;
+    const studentNumberPattern = /^s\d{5}$/;
     if (!studentNumberPattern.test(student.studentNumber)) {
         alert("학번은 영문과 숫자만 입력 가능합니다.");
         return false;
@@ -100,4 +101,20 @@ function isValidEmail(email) {
 //학생목록 로드하는 함수
 function loadStudents() {
     console.log("학생 목록 로드 중.....");
+    fetch(`${API_BASE_URL}/api/students`) //Promise
+        .then((response) => {
+            if(!response.ok){
+                throw new Error("학생 목록을 불러오는데 실패했습니다!.");
+            }
+            return response.json();
+        })
+        .then((students) => renderStudentTable(students))
+        .catch((error) => {
+            console.log("Error: " + error);
+            alert("학생 목록을 불러오는데 실패했습니다!.");
+        });
+}
+
+function renderStudentTable(students) {
+    console.log(students);
 }
