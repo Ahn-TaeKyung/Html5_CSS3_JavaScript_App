@@ -175,8 +175,8 @@ function renderBookTable(books) {
                     <td>${book.detail ? book.detail.edition : "-"}</td>
                     <td>${book.detail ? book.detail.pageCount : "-"}</td>
                     <td>
-                        <button class="edit-btn" onclick="editStudent(${student.id})">수정</button>
-                        <button class="delete-btn" onclick="deleteStudent(${student.id})">삭제</button>
+                        <button class="edit-btn" onclick="editBook(${book.id})">수정</button>
+                        <button class="delete-btn" onclick="deleteBook(${book.id})">삭제</button>
                     </td>
                 `;
         //<tbody>의 아래에 <tr>을 추가시켜 준다.
